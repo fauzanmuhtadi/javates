@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "User">
+    <select id = "getAllUsers" resultMap = "resultUser">
+        SELECT * FROM user;
+    </select>
+    <select id = "getJob" resultMap = "resultJob">
+        SELECT * FROM job;
+    </select>
+    <select id = "getJobById" resultMap = "resultJob" parameterType = "String">
+        SELECT * FROM job WHERE id = #{id};
+    </select>
+    <resultMap id = "resultUser" type = "org.example.restapi.model.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    <resultMap id = "resultJob" type = "org.example.restapi.model.Jobs">
+        <result property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="url" column="url"/>
+        <result property="created_at" column="created_at"/>
+        <result property="company" column="company"/>
+        <result property="company_url" column="company_url"/>
+        <result property="location" column="location"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="how_to_apply" column="how_to_apply"/>
+        <result property="company_logo" column="company_logo"/>
+    </resultMap>
+</mapper>
